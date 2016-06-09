@@ -1,0 +1,18 @@
+#!/bin/sh
+#
+# Shortcut for encoding/decoding URLs.
+
+usage () {
+  echo "Usage: $ furl [(d|e)] [URL]\n"
+  exit 1
+}
+
+if [ "$#" -ne 2 ]; then
+  usage
+fi
+
+case $1 in
+  "d") python -c "import sys, urllib as ul; print ul.unquote_plus('$2')";;
+  "e") python -c "import sys, urllib as ul; print ul.quote_plus('$2')";;
+  *) usage;;
+esac

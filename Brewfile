@@ -1,0 +1,21 @@
+cask_args appdir: '/Applications'
+
+tap 'homebrew/bundle'
+
+brew 'coreutils'
+brew 'curl'
+brew 'mysql'
+brew 'nmap'
+brew 'node'
+brew 'openssl'
+brew 'postgresql'
+brew 'python'
+brew 'spark'
+brew 'sqlite'
+brew 'wget'
+
+cask 'atom'
+cask 'dropbox'
+cask 'github-desktop'
+cask 'mysqlworkbench'
+cask 'slack'

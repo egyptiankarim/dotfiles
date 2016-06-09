@@ -1,0 +1,22 @@
+#!/bin/sh
+#
+# Shortcut for sending HTTP(S) requests from files.
+#
+# USAGE:
+#
+#   $ bang [target] [request file] [response file (optional)]
+
+usage () {
+  echo "Usage: $ bang [target] [request file] [response file (optional)]\n"
+  exit 1
+}
+
+if [ "$#" -lt 2 ]; then
+  usage
+fi
+
+if [ "$3" = "" ] ; then
+  < $2 openssl s_client -crlf -quiet -ign_eof -connect $1
+else
+  < $2 openssl s_client -crlf -quiet -ign_eof -connect $1 > $3
+fi
