@@ -12,3 +12,9 @@ fi
 alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
+
+function md ()
+{
+    mkdir -p -- "$1" &&
+      cd -P -- "$1"
+}
