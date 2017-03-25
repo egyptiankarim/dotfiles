@@ -13,7 +13,7 @@ brew 'ruby'
 brew 'spark'
 
 cask 'atom'
-cask 'docker-toolbox'
+cask 'docker'
 cask 'dropbox'
 cask 'firefox'
 cask 'github-desktop'
