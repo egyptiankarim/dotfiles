@@ -1,4 +1,4 @@
-# Configuration file for Wireshark 2.0.4.
+# Configuration file for Wireshark 2.2.7.
 #
 # This file is regenerated each time preferences are saved within
 # Wireshark. Making manual changes should be safe, however.
@@ -100,7 +100,7 @@
 
 # The path to the webbrowser (Ex: mozilla)
 # A string
-#gui.webbrowser: /usr/bin/open %s
+#gui.webbrowser: 
 
 # Check for updates (Windows only)
 # TRUE or FALSE (case-insensitive)
@@ -115,9 +115,17 @@
 # A decimal number
 #gui.update.interval: 86400
 
-# Custom window title. (Appended to existing titles.)
+# Custom window title to be appended to the existing title
+# %P = profile name
+# %V = version info
 # A string
 #gui.window_title: 
+
+# Custom window title to be prepended to the existing title
+# %P = profile name
+# %V = version info
+# A string
+#gui.prepend_window_title: 
 
 # Custom start page title
 # A string
@@ -259,7 +267,7 @@ gui.qt.font_name: Menlo,13,-1,5,50,0,0,0,0,0
 
 # Interface link-layer header types (Ex: en0(1),en1(143),...)
 # A string
-capture.devices_linktypes: en0(1),awdl0(1),bridge0(1),ipsec0(0),utun0(0),fw0(138),en1(1),en2(1),p2p0(12),en4(1),lo0(0)
+capture.devices_linktypes: en0(1),bridge0(1),p2p0(12),awdl0(1),utun0(0),en1(1),utun1(0),vmnet1(1),en2(1),utun2(0),en3(1),en4(1),en5(1),en7(1),vmnet8(1),lo0(0),gif0(0),stf0(0),cisco(147),randpkt(147),ssh(147)
 
 # Interface descriptions (Ex: eth0(eth0 descr),eth1(eth1 descr),...)
 # A string
@@ -275,15 +283,15 @@ capture.devices_linktypes: en0(1),awdl0(1),bridge0(1),ipsec0(0),utun0(0),fw0(138
 
 # Interface buffer size (Ex: en0(1),en1(143),...)
 # A string
-capture.devices_buffersize: en0(2),awdl0(2),bridge0(2),ipsec0(2),utun0(2),fw0(2),en1(2),en2(2),p2p0(2),en4(2),lo0(2)
+capture.devices_buffersize: en0(2),bridge0(2),p2p0(2),awdl0(2),utun0(2),en1(2),utun1(2),vmnet1(2),en2(2),utun2(2),en3(2),en4(2),en5(2),en7(2),vmnet8(2),lo0(2),gif0(2),stf0(2),cisco(2),randpkt(2),ssh(2)
 
 # Interface snap length (Ex: en0(65535),en1(1430),...)
 # A string
-capture.devices_snaplen: en0:0(262144),awdl0:0(262144),bridge0:0(262144),ipsec0:0(262144),utun0:0(262144),fw0:0(262144),en1:0(262144),en2:0(262144),p2p0:0(262144),en4:0(262144),lo0:0(262144)
+capture.devices_snaplen: en0:0(262144),bridge0:0(262144),p2p0:0(262144),awdl0:0(262144),utun0:0(262144),en1:0(262144),utun1:0(262144),vmnet1:0(262144),en2:0(262144),utun2:0(262144),en3:0(262144),en4:0(262144),en5:0(262144),en7:0(262144),vmnet8:0(262144),lo0:0(262144),gif0:0(262144),stf0:0(262144),cisco:0(262144),randpkt:0(262144),ssh:0(262144)
 
 # Interface promiscuous mode (Ex: en0(0),en1(1),...)
 # A string
-capture.devices_pmode: en0(1),awdl0(1),bridge0(1),ipsec0(1),utun0(1),fw0(1),en1(1),en2(1),p2p0(1),en4(1),lo0(1)
+capture.devices_pmode: en0(1),bridge0(1),p2p0(1),awdl0(1),utun0(1),en1(1),utun1(1),vmnet1(1),en2(1),utun2(1),en3(1),en4(1),en5(1),en7(1),vmnet8(1),lo0(1),gif0(1),stf0(1),cisco(1),randpkt(1),ssh(1)
 
 # Capture in promiscuous mode?
 # TRUE or FALSE (case-insensitive)
@@ -332,6 +340,92 @@ capture.devices_pmode: en0(1),awdl0(1),bridge0(1),ipsec0(1),utun0(1),fw0(1),en1(
 # DEBUG    = 128
 #console.log.level: 28
 
+####### Extcap Utilities ########
+
+# Save arguments on start of capture
+# TRUE or FALSE (case-insensitive)
+#extcap.gui_save_on_start: TRUE
+
+# Remote SSH server address
+# A string
+#extcap.cisco.remotehost: 
+
+# Remote SSH server port
+# A string
+#extcap.cisco.remoteport: 22
+
+# Remote SSH server username
+# A string
+#extcap.cisco.remoteusername: karim
+
+# Path to SSH private key
+# A string
+#extcap.cisco.sshkey: 
+
+# Remote interface
+# A string
+#extcap.cisco.remoteinterface: 
+
+# Remote capture filter
+# A string
+#extcap.cisco.remotefilter: deny tcp host 192.168.42.1 any eq 22, deny tcp any eq 22 host 192.168.42.1, deny tcp host 192.168.63.1 any eq 22, deny tcp any eq 22 host 192.168.63.1, deny tcp host 10.10.75.233 any eq 22, deny tcp any eq 22 host 10.10.75.233, deny tcp host fe80::4fd:7cee:1350:83a8 any eq 22, deny tcp any eq 22 host fe80::4fd:7cee:1350:83a8, deny tcp host fe80::aede:48ff:fe00:1122 any eq 22, deny tcp any eq 22 host fe80::aede:48ff:fe00:1122, deny tcp host fe80::72f9:236e:395b:c517 any eq 22, deny tcp any eq 22 host fe80::72f9:236e:395b:c517, deny tcp host fe80::61b3:6927:86cc:d6e4 any eq 22, deny tcp any eq 22 host fe80::61b3:6927:86cc:d6e4, deny tcp host fe80::e5ac:a2be:6f66:414b any eq 22, deny tcp any eq 22 host fe80::e5ac:a2be:6f66:414b, deny tcp host fe80::449c:18ff:fee7:9441 any eq 22, deny tcp any eq 22 host fe80::449c:18ff:fee7:9441, deny tcp host 192.168.1.7 any eq 22, deny tcp any eq 22 host 192.168.1.7, deny tcp host fe80::1006:1e74:ff96:63dd any eq 22, deny tcp any eq 22 host fe80::1006:1e74:ff96:63dd, deny tcp host fe80::1 any eq 22, deny tcp any eq 22 host fe80::1, permit ip any any
+
+# Packets to capture
+# A string
+#extcap.cisco.remotecount: 
+
+# Max bytes in a packet
+# A string
+#extcap.randpkt.maxbytes: 5000
+
+# Number of packets
+# A string
+#extcap.randpkt.count: 1000
+
+# Random type
+# A string
+#extcap.randpkt.randomtype: false
+
+# All random packets
+# A string
+#extcap.randpkt.allrandom: false
+
+# Type of packet
+# A string
+#extcap.randpkt.type: 
+
+# Remote SSH server address
+# A string
+#extcap.ssh.remotehost: 
+
+# Remote SSH server port
+# A string
+#extcap.ssh.remoteport: 22
+
+# Remote SSH server username
+# A string
+#extcap.ssh.remoteusername: karim
+
+# Path to SSH private key
+# A string
+#extcap.ssh.sshkey: 
+
+# Remote interface
+# A string
+#extcap.ssh.remoteinterface: eth0
+
+# Remote capture binary
+# A string
+#extcap.ssh.remotecapturebin: dumpcap
+
+# Remote capture filter
+# A string
+#extcap.ssh.remotefilter: not ((host 192.168.42.1 or host 192.168.63.1 or host 10.10.75.233 or host fe80::4fd:7cee:1350:83a8 or host fe80::aede:48ff:fe00:1122 or host fe80::72f9:236e:395b:c517 or host fe80::61b3:6927:86cc:d6e4 or host fe80::e5ac:a2be:6f66:414b or host fe80::449c:18ff:fee7:9441 or host 192.168.1.7 or host fe80::1006:1e74:ff96:63dd or host fe80::1) and port 22)
+
+# Packets to capture
+# A string
+#extcap.ssh.remotecount: 0
+
 ####### Name Resolution ########
 
 # Resolve Ethernet MAC address to manufacturer names
@@ -354,10 +448,6 @@ capture.devices_pmode: en0(1),awdl0(1),bridge0(1),ipsec0(1),utun0(1),fw0(1),en1(
 # TRUE or FALSE (case-insensitive)
 #nameres.use_external_name_resolver: TRUE
 
-# Enable concurrent DNS name resolution. Only applies when network name resolution is enabled. You probably want to enable this.
-# TRUE or FALSE (case-insensitive)
-#nameres.concurrent_dns: TRUE
-
 # The maximum number of DNS requests that may be active at any time. A large value (many thousands) might overload the network or make your DNS server behave badly.
 # A decimal number
 #nameres.name_resolve_concurrency: 500
@@ -365,6 +455,10 @@ capture.devices_pmode: en0(1),awdl0(1),bridge0(1),ipsec0(1),utun0(1),fw0(1),en1(
 # By default "hosts" files will be loaded from multiple sources. Checking this box only loads the "hosts" in the current profile.
 # TRUE or FALSE (case-insensitive)
 #nameres.hosts_file_handling: FALSE
+
+# Resolve VLAN IDs to describing names. To do so you need a file called vlans in your user preference directory. Format of the file is:  "ID<Tab>Name" One line per VLAN.
+# TRUE or FALSE (case-insensitive)
+#nameres.vlan_name: FALSE
 
 # You must restart Wireshark for this change to take effect
 # TRUE or FALSE (case-insensitive)
@@ -407,6 +501,10 @@ capture.devices_pmode: en0(1),awdl0(1),bridge0(1),ipsec0(1),utun0(1),fw0(1),en1(
 # Look for dissectors that left some bytes undecoded.
 # TRUE or FALSE (case-insensitive)
 #protocols.enable_incomplete_dissectors_check: FALSE
+
+# TCP port used by source of IEC104, usually 2404
+# A decimal number
+#104apci.tcp.port: 2404
 
 # Use a registered heuristic sub-dissector to decode the data payload
 # TRUE or FALSE (case-insensitive)
@@ -660,6 +758,10 @@ capture.devices_pmode: en0(1),awdl0(1),bridge0(1),ipsec0(1),utun0(1),fw0(1),en1(
 # TRUE or FALSE (case-insensitive)
 #radiotap.bit14_fcs_in_header: FALSE
 
+# Some generators use rates with bit 7 set to indicate an MCS, e.g. BSD. others (Linux, AirPcap) do not.
+# TRUE or FALSE (case-insensitive)
+#radiotap.interpret_high_rates_as_mcs: FALSE
+
 # Use ipaccess nanoBTS specific definitions for OML
 # One of: ETSI/3GPP TS 12.21, Siemens, ip.access, Ericsson OM2000
 # (case-insensitive).
@@ -730,10 +832,6 @@ capture.devices_pmode: en0(1),awdl0(1),bridge0(1),ipsec0(1),utun0(1),fw0(1),en1(
 # Set the TCP port for AgentX(if other than the default of 705)
 # A decimal number
 #agentx.tcp.agentx_port: 705
-
-# Whether the AH payload decode should be placed in a subtree
-# TRUE or FALSE (case-insensitive)
-#ah.place_ah_payload_in_subtree: FALSE
 
 # Whether the AIM dissector should reassemble messages spanning multiple TCP segments. To use this option, you must also enable "Allow subdissectors to reassemble TCP streams" in the TCP protocol settings.
 # TRUE or FALSE (case-insensitive)
@@ -834,6 +932,10 @@ capture.devices_pmode: en0(1),awdl0(1),bridge0(1),ipsec0(1),utun0(1),fw0(1),en1(
 # TRUE or FALSE (case-insensitive)
 #arp.detect_duplicate_ips: TRUE
 
+# Try to resolve physical addresses to host names from ARP requests/responses
+# TRUE or FALSE (case-insensitive)
+#arp.register_network_address_binding: TRUE
+
 # Set the UDP port numbers (typically the range 5555 to 5560) used for Aruba Networks encapsulated remote mirroring frames;
 # 0 (default) means that the ARUBA_ERM dissector is not active
 # 
@@ -874,6 +976,11 @@ capture.devices_pmode: en0(1),awdl0(1),bridge0(1),ipsec0(1),utun0(1),fw0(1),en1(
 # One of: Version 1.2
 # (case-insensitive).
 #asterix.i023_version: Version 1.2
+
+# Select the CAT025 version
+# One of: Version 1.1
+# (case-insensitive).
+#asterix.i025_version: Version 1.1
 
 # Select the CAT034 version
 # One of: Version 1.27
@@ -1014,6 +1121,11 @@ capture.devices_pmode: en0(1),awdl0(1),bridge0(1),ipsec0(1),utun0(1),fw0(1),en1(
 # A decimal number
 #bootp.pkt.ccc.option: 122
 
+# Endianness applied to UUID fields
+# One of: Little Endian, Big Endian
+# (case-insensitive).
+#bootp.uuid.endian: Little Endian
+
 # Set the UDP port for BRP messages
 # A decimal number
 #brp.port: 0
@@ -1147,6 +1259,10 @@ capture.devices_pmode: en0(1),awdl0(1),bridge0(1),ipsec0(1),utun0(1),fw0(1),en1(
 # TRUE or FALSE (case-insensitive)
 #camel.persistentsrt: FALSE
 
+# Whether the CAN ID/flags field should be byte-swapped
+# TRUE or FALSE (case-insensitive)
+#can.byte_swap: FALSE
+
 # Set the port for CAPWAP Control messages (if other than the default of 5246)
 # A decimal number
 #capwap.udp.port.control: 5246
@@ -1188,7 +1304,7 @@ capture.devices_pmode: en0(1),awdl0(1),bridge0(1),ipsec0(1),utun0(1),fw0(1),en1(
 # A string denoting an positive integer range (e.g., "1-20,30-40")
 #cflow.ipfix.ports: 4739
 
-# Set the number of fields allowed in a template.  Use 0 (zero) for unlimited.   (default: V9TEMPLATE_MAX_FIELDS_DEF)
+# Set the number of fields allowed in a template.  Use 0 (zero) for unlimited.   (default: 60)
 # A decimal number
 #cflow.max_template_fields: 60
 
@@ -1214,6 +1330,10 @@ capture.devices_pmode: en0(1),awdl0(1),bridge0(1),ipsec0(1),utun0(1),fw0(1),en1(
 # IPv4 address or hostname of the image generator
 # A string
 #cigi.ig: 
+
+# Whether the CIP dissector should display enhanced/verbose data in the Info column for CIP explicit messages
+# TRUE or FALSE (case-insensitive)
+#cip.enhanced_info_column: TRUE
 
 # NSAP selector for Transport Protocol (last byte in hex)
 # A hexadecimal number
@@ -1510,17 +1630,17 @@ capture.devices_pmode: en0(1),awdl0(1),bridge0(1),ipsec0(1),utun0(1),fw0(1),en1(
 # The way DMX values are displayed
 # One of: Percent, Hexadecimal, Decimal
 # (case-insensitive).
-#dmx-chan.dmx_disp_chan_val_type: Percent
+#dmx_chan.dmx_disp_chan_val_type: Percent
 
 # The way DMX channel numbers are displayed
 # One of: Hexadecimal, Decimal
 # (case-insensitive).
-#dmx-chan.dmx_disp_chan_nr_type: Hexadecimal
+#dmx_chan.dmx_disp_chan_nr_type: Hexadecimal
 
 # The number of columns for the DMX display
 # One of: 6, 10, 12, 16, 24
 # (case-insensitive).
-#dmx-chan.dmx_disp_col_count: 16
+#dmx_chan.dmx_disp_col_count: 16
 
 # Whether the DNP3 dissector should reassemble messages spanning multiple TCP segments. To use this option, you must also enable "Allow subdissectors to reassemble TCP streams" in the TCP protocol settings.
 # TRUE or FALSE (case-insensitive)
@@ -1537,6 +1657,18 @@ capture.devices_pmode: en0(1),awdl0(1),bridge0(1),ipsec0(1),utun0(1),fw0(1),en1(
 # Whether the DNS dissector should reassemble messages spanning multiple TCP segments. To use this option, you must also enable "Allow subdissectors to reassemble TCP streams" in the TCP protocol settings.
 # TRUE or FALSE (case-insensitive)
 #dns.desegment_dns_messages: TRUE
+
+# Specifies that decryption should be attempted on all packets, even if the session initialization wasn't captured.
+# TRUE or FALSE (case-insensitive)
+#dof.custom_dof_decrypt_all: FALSE
+
+# Specifies that operations should be tracked across multiple packets, providing summary lists. This takes time and memory.
+# TRUE or FALSE (case-insensitive)
+#dof.custom_dof_track_operations: FALSE
+
+# Limits the number of operations shown before and after the current operations
+# A decimal number
+#dof.custom_dof_track_operations_window: 5
 
 # Whether the DRDA dissector should reassemble messages spanning multiple TCP segments. To use this option, you must also enable "Allow subdissectors to reassemble TCP streams" in the TCP protocol settings.
 # TRUE or FALSE (case-insensitive)
@@ -1682,6 +1814,10 @@ capture.devices_pmode: en0(1),awdl0(1),bridge0(1),ipsec0(1),utun0(1),fw0(1),en1(
 # Attempt to Check ESP Authentication based on the SAD described hereafter.
 # TRUE or FALSE (case-insensitive)
 #esp.enable_authentication_check: FALSE
+
+# Whether the E-Tag summary line should be shown in the protocol tree
+# TRUE or FALSE (case-insensitive)
+#etag.summary_in_tree: TRUE
 
 # Place the hash/symbol files (generated by the Apache Etch compiler) ending with .ewh here
 # A path to a directory
@@ -2036,6 +2172,10 @@ capture.devices_pmode: en0(1),awdl0(1),bridge0(1),ipsec0(1),utun0(1),fw0(1),en1(
 # TRUE or FALSE (case-insensitive)
 #gtp.dissect_gtp_over_tcp: TRUE
 
+# Track GTP session
+# TRUE or FALSE (case-insensitive)
+#gtp.track_gtp_session: FALSE
+
 # H.225 Server TLS Port
 # A decimal number
 #h225.tls.port: 1300
@@ -2177,6 +2317,10 @@ capture.devices_pmode: en0(1),awdl0(1),bridge0(1),ipsec0(1),utun0(1),fw0(1),en1(
 # A string denoting an positive integer range (e.g., "1-20,30-40")
 #http.tcp.port: 80,3128,3132,5985,8080,8088,11371,1900,2869,2710
 
+# SCTP Ports range
+# A string denoting an positive integer range (e.g., "1-20,30-40")
+#http.sctp.port: 80
+
 # SSL/TLS Ports range
 # A string denoting an positive integer range (e.g., "1-20,30-40")
 #http.ssl.port: 443
@@ -2287,6 +2431,10 @@ capture.devices_pmode: en0(1),awdl0(1),bridge0(1),ipsec0(1),utun0(1),fw0(1),en1(
 # A decimal number
 #ilp.tcp.port: 7276
 
+# Whether to use heuristics for post-STARTTLS detection of encrypted IMAP conversations
+# TRUE or FALSE (case-insensitive)
+#imap.ssl_heuristic: TRUE
+
 # TCAP Subsystem numbers used for INAP
 # A string denoting an positive integer range (e.g., "1-20,30-40")
 #inap.ssn: 106,241
@@ -2395,13 +2543,21 @@ capture.devices_pmode: en0(1),awdl0(1),bridge0(1),ipsec0(1),utun0(1),fw0(1),en1(
 # TRUE or FALSE (case-insensitive)
 #ipv6.use_geoip: TRUE
 
-# Whether to check that all RPL Source Routing Headers adhere to RFC 6554
+# Whether to check that all RPL Source Routed packets do not visit a node more than once
 # TRUE or FALSE (case-insensitive)
 #ipv6.perform_strict_rpl_srh_rfc_checking: FALSE
 
 # Try to decode a packet using an heuristic sub-dissector before using a sub-dissector registered to a specific port
 # TRUE or FALSE (case-insensitive)
 #ipv6.try_heuristic_first: FALSE
+
+# Whether to display IPv6 extension headers as a separate protocol or a sub-protocol of the IPv6 packet
+# TRUE or FALSE (case-insensitive)
+#ipv6.exthdr_under_root_protocol_tree: FALSE
+
+# If enabled the Length field in octets will be hidden
+# TRUE or FALSE (case-insensitive)
+#ipv6.exthdr_hide_len_oct_field: FALSE
 
 # The iSCSI protocol version
 # One of: Draft 08, Draft 09, Draft 11, Draft 12, Draft 13
@@ -2553,6 +2709,25 @@ capture.devices_pmode: en0(1),awdl0(1),bridge0(1),ipsec0(1),utun0(1),fw0(1),en1(
 # TRUE or FALSE (case-insensitive)
 #isns.desegment: TRUE
 
+# Endian of the length field. Big endian or Little endian
+# One of: Big endian, Little endian
+# (case-insensitive).
+#iso8583.len_endian: Little endian
+
+#  iso8583 TCP port
+# A decimal number
+#iso8583.tcp.port: 0
+
+#  charset for numbers
+# One of: Digits represented as ASCII Characters, Digits represented in nibbles
+# (case-insensitive).
+#iso8583.charset: Digits represented as ASCII Characters
+
+#  binary data representation
+# One of: Bin data represented as Hex Ascii characters, Bin data not encoded
+# (case-insensitive).
+#iso8583.binencode: Bin data represented as Hex Ascii characters
+
 # Note national variants may not be fully supported
 # One of: ITU Standard, French National Standard, Israeli National Standard, Russian National Standard, Japan National Standard, Japan National Standard (TTC)
 # (case-insensitive).
@@ -2610,9 +2785,9 @@ capture.devices_pmode: en0(1),awdl0(1),bridge0(1),ipsec0(1),utun0(1),fw0(1),en1(
 # TRUE or FALSE (case-insensitive)
 #jxta.desegment: TRUE
 
-# Kafka broker's TCP port
-# A decimal number
-#kafka.tcp.port: 0
+# TCP Ports range
+# A string denoting an positive integer range (e.g., "1-20,30-40")
+#kafka.tcp.ports: 
 
 # Set the port for Kismet Drone/Server messages (if other than the default of 2502)
 # A decimal number
@@ -2687,6 +2862,10 @@ capture.devices_pmode: en0(1),awdl0(1),bridge0(1),ipsec0(1),utun0(1),fw0(1),en1(
 # RTP payload type for embedded LAPD. It must be one of the dynamic types from 96 to 127. Set it to 0 to disable.
 # A decimal number
 #lapd.rtp_payload_type: 0
+
+# SCTP Payload Protocol Identifier for LAPD. It is a 32 bits value from 0 to 4294967295. Set it to 0 to disable.
+# A decimal number
+#lapd.sctp_payload_protocol_identifier: 0
 
 # Whether the dissector should defragment LAPDm messages spanning multiple packets.
 # TRUE or FALSE (case-insensitive)
@@ -2980,7 +3159,7 @@ capture.devices_pmode: en0(1),awdl0(1),bridge0(1),ipsec0(1),utun0(1),fw0(1),en1(
 # TRUE or FALSE (case-insensitive)
 #mbrtu.crc_verification: FALSE
 
-# Set the TCP port for encapsulated Modbus RTU packets
+# Set the TCP/UDP port for encapsulated Modbus RTU packets
 # A decimal number
 #mbrtu.tcp.port: 0
 
@@ -3052,13 +3231,21 @@ capture.devices_pmode: en0(1),awdl0(1),bridge0(1),ipsec0(1),utun0(1),fw0(1),en1(
 # TRUE or FALSE (case-insensitive)
 #mplspwatmn1cw.extend_cw_length_with_rsvd: FALSE
 
-# Assume TCP Option MPTCP (30)
+# To use this option you must also enable "Analyze TCP sequence numbers". 
 # TRUE or FALSE (case-insensitive)
 #mptcp.analyze_mptcp: TRUE
 
-# Assume TCP Option MPTCP (30)
+# In case you don't capture the key, it will use the first DSN seen
+# TRUE or FALSE (case-insensitive)
+#mptcp.relative_sequence_numbers: TRUE
+
+# You need to capture the handshake for this to work."Map TCP subflows to their respective MPTCP connections"
 # TRUE or FALSE (case-insensitive)
 #mptcp.analyze_mappings: FALSE
+
+# You need to enable DSS mapping analysis for this option to work
+# TRUE or FALSE (case-insensitive)
+#mptcp.intersubflows_retransmission: FALSE
 
 # Whether the MQ dissector should reassemble messages spanning multiple TCP segments. To use this option, you must also enable "Allow subdissectors to reassemble TCP streams" in the TCP protocol settings.
 # TRUE or FALSE (case-insensitive)
@@ -3072,7 +3259,7 @@ capture.devices_pmode: en0(1),awdl0(1),bridge0(1),ipsec0(1),utun0(1),fw0(1),en1(
 # A decimal number
 #mqpcf.maxprm: 999
 
-# When dissecting a parameter of a PCFm, if it is a StringList, IntegerList or Integer64 List,  You can limit the number of element displayed, before it continue with the next Parameter.
+# When dissecting a parameter of a PCFm, if it is a StringList, IntegerList or Integer64 List,  You can limit the number of elements displayed, before it continues with the next Parameter.
 # A decimal number
 #mqpcf.maxlst: 20000
 
@@ -3139,6 +3326,10 @@ capture.devices_pmode: en0(1),awdl0(1),bridge0(1),ipsec0(1),utun0(1),fw0(1),en1(
 # Always dissect NAS EPS messages as plain
 # TRUE or FALSE (case-insensitive)
 #nas-eps.dissect_plain: FALSE
+
+# This should work when the NAS security algorithm is NULL (128-EEA0).
+# TRUE or FALSE (case-insensitive)
+#nas-eps.null_decipher: TRUE
 
 # Whether the Nasdaq ITCH dissector should decode Chi X extensions.
 # TRUE or FALSE (case-insensitive)
@@ -3341,6 +3532,10 @@ capture.devices_pmode: en0(1),awdl0(1),bridge0(1),ipsec0(1),utun0(1),fw0(1),en1(
 # TRUE or FALSE (case-insensitive)
 #nfs.display_major_nfsv4_ops: TRUE
 
+# Whether the Authentication Extension data contains the source address. Some Cisco IOS implementations forgo this part of RFC2332.
+# TRUE or FALSE (case-insensitive)
+#nhrp.auth_ext_has_addr: TRUE
+
 # Whether the dissector will track and match MSG and RES calls for asynchronous NLM
 # TRUE or FALSE (case-insensitive)
 #nlm.msg_res_matching: FALSE
@@ -3356,6 +3551,18 @@ capture.devices_pmode: en0(1),awdl0(1),bridge0(1),ipsec0(1),utun0(1),fw0(1),en1(
 # Dissect custom nrlolsr tc message (incompatible with rfc routing agents)
 # TRUE or FALSE (case-insensitive)
 #olsr.nrlolsr: TRUE
+
+# SSL/TLS Ports range
+# A string denoting an positive integer range (e.g., "1-20,30-40")
+#opa.fe.ssl.port: 3249-3252
+
+# TCP Ports range
+# A string denoting an positive integer range (e.g., "1-20,30-40")
+#opa.fe.tcp.port: 3245-3248
+
+# Attempt to parse mad payload even when MAD.Status is non-zero
+# TRUE or FALSE (case-insensitive)
+#opa.mad.parse_mad_error: FALSE
 
 # The TCP ports for the OPC UA TCP Binary Protocol (comma separated list)
 # A string denoting an positive integer range (e.g., "1-20,30-40")
@@ -3396,6 +3603,10 @@ capture.devices_pmode: en0(1),awdl0(1),bridge0(1),ipsec0(1),utun0(1),fw0(1),en1(
 # Modbus/TCP words can be transcoded either big- or little endian. Default will be little endian
 # TRUE or FALSE (case-insensitive)
 #opensafety.mbtcp_big_endian: FALSE
+
+# Enables additional information in the dissection for better debugging an openSAFETY trace
+# TRUE or FALSE (case-insensitive)
+#opensafety.debug_verbose: FALSE
 
 # Enable heuristic dissection for openSAFETY over UDP encoded traffic
 # TRUE or FALSE (case-insensitive)
@@ -3651,14 +3862,17 @@ capture.devices_pmode: en0(1),awdl0(1),bridge0(1),ipsec0(1),utun0(1),fw0(1),en1(
 # (case-insensitive).
 #pn532.prtype532: Data
 
+# Whether the PNIO dissector is allowed to use detailed PROFIsafe dissection of cyclic data frames
+# TRUE or FALSE (case-insensitive)
+#pn_io.pnio_ps_selection: TRUE
+
+# Select your Networkpath to your GSD-Files.
+# A path to a directory
+#pn_io.pnio_ps_networkpath: 
+
 # Whether the POP dissector should reassemble RETR and TOP responses and spanning multiple TCP segments. To use this option, you must also enable "Allow subdissectors to reassemble TCP streams" in the TCP protocol settings.
 # TRUE or FALSE (case-insensitive)
 #pop.desegment_data: TRUE
-
-# Select Document
-# One of: FDTs 2012 Rev PC1, FDTS 2014 Rev
-# (case-insensitive).
-#ppcap.rev_doc: FDTS 2014 Rev
 
 # Whether fragmented 802.11 aggregated MPDUs should be reassembled
 # TRUE or FALSE (case-insensitive)
@@ -3668,10 +3882,6 @@ capture.devices_pmode: en0(1),awdl0(1),bridge0(1),ipsec0(1),utun0(1),fw0(1),en1(
 # One of: None, 16-Bit, 32-Bit
 # (case-insensitive).
 #ppp.fcs_type: None
-
-# Whether Van Jacobson-compressed PPP frames should be decompressed
-# TRUE or FALSE (case-insensitive)
-#ppp.decompress_vj: TRUE
 
 # Default Protocol ID to be used for PPPMuxCP
 # A hexadecimal number
@@ -3763,10 +3973,6 @@ capture.devices_pmode: en0(1),awdl0(1),bridge0(1),ipsec0(1),utun0(1),fw0(1),en1(
 # A string denoting an positive integer range (e.g., "1-20,30-40")
 #radius.ports: 1645,1646,1700,1812,1813,3799
 
-# Time to live for a radius request used for matching it with a response
-# A decimal number
-#radius.request_ttl: 5
-
 # The SCCP SubSystem Number for RANAP (default 142)
 # A decimal number
 #ranap.sccp_ssn: 142
@@ -3851,7 +4057,7 @@ capture.devices_pmode: en0(1),awdl0(1),bridge0(1),ipsec0(1),utun0(1),fw0(1),en1(
 #rlc-lte.call_pdcp_for_srb: TRUE
 
 # Call PDCP dissector for user-plane PDUs.  Note that without reassembly, it canonly be called for complete PDUs (i.e. not segmented over RLC)
-# One of: Off, 7-bit SN, 12-bit SN, 15-bit SN, Use signalled value
+# One of: Off, 7-bit SN, 12-bit SN, 15-bit SN, 18-bit SN, Use signalled value
 # (case-insensitive).
 #rlc-lte.call_pdcp_for_drb: Use signalled value
 
@@ -3905,7 +4111,7 @@ capture.devices_pmode: en0(1),awdl0(1),bridge0(1),ipsec0(1),utun0(1),fw0(1),en1(
 
 # Default link-layer type to use if an Open Reply packet has not been received.
 # A decimal number
-#rpcap.linktype: 0
+#rpcap.linktype: 4294967295
 
 # Check to treat all traffic between the configured source/destination as RPCoRDMA
 # TRUE or FALSE (case-insensitive)
@@ -4054,6 +4260,10 @@ capture.devices_pmode: en0(1),awdl0(1),bridge0(1),ipsec0(1),utun0(1),fw0(1),en1(
 # Specifies the maximum number of samples dissected in a DATA_BATCH submessage. Increasing this value may affect performances if the trace has a lot of big batched samples.
 # A decimal number
 #rtps.max_batch_samples_dissected: 16
+
+# Shows the Topic Name and Type Name of the samples.
+# TRUE or FALSE (case-insensitive)
+#rtps.enable_topic_info: FALSE
 
 # RTSP TCP Ports range
 # A string denoting an positive integer range (e.g., "1-20,30-40")
@@ -4337,6 +4547,10 @@ capture.devices_pmode: en0(1),awdl0(1),bridge0(1),ipsec0(1),utun0(1),fw0(1),en1(
 # TRUE or FALSE (case-insensitive)
 #smb2.eosmb2_take_name_as_fid: FALSE
 
+# Whether the dissector should reassemble Named Pipes over SMB2 commands
+# TRUE or FALSE (case-insensitive)
+#smb2.pipe_reassembly: TRUE
+
 # Whether the SMB Direct dissector should reassemble fragmented payloads
 # TRUE or FALSE (case-insensitive)
 #smb_direct.reassemble_smb_direct: TRUE
@@ -4546,14 +4760,6 @@ capture.devices_pmode: en0(1),awdl0(1),bridge0(1),ipsec0(1),utun0(1),fw0(1),en1(
 # TRUE or FALSE (case-insensitive)
 #t38.dissect_possible_rtpv2_packets_as_rtp: FALSE
 
-# Set the TCP port for T.38 messages
-# A decimal number
-#t38.tcp.port: 6004
-
-# Set the UDP port for T.38 messages
-# A decimal number
-#t38.udp.port: 6004
-
 # Whether the dissector should reassemble T.38 PDUs spanning multiple TCP segments when TPKT is used over TCP. To use this option, you must also enable "Allow subdissectors to reassemble TCP streams" in the TCP protocol settings.
 # TRUE or FALSE (case-insensitive)
 #t38.reassembly: TRUE
@@ -4647,6 +4853,10 @@ capture.devices_pmode: en0(1),awdl0(1),bridge0(1),ipsec0(1),utun0(1),fw0(1),en1(
 # Assume TCP Experimental Options (253, 254) have a Magic Number and use it for dissection
 # TRUE or FALSE (case-insensitive)
 #tcp.dissect_experimental_options_with_magic: TRUE
+
+# Collect and store process information retrieved from IPFIX dissector
+# TRUE or FALSE (case-insensitive)
+#tcp.display_process_info_from_ipfix: FALSE
 
 # Set the port for IPSEC/ISAKMP messages (typically 10000)
 # A decimal number
@@ -4897,7 +5107,7 @@ capture.devices_pmode: en0(1),awdl0(1),bridge0(1),ipsec0(1),utun0(1),fw0(1),en1(
 # A string denoting an positive integer range (e.g., "1-20,30-40")
 #vp8.dynamic.payload.type: 
 
-# There is some ambigiousy on how to calculate V3 checksumsAs in V3 will use a pseudo header(which may only be implemented for IPv6 by some manufacturers)
+# There is some ambiguity on how to calculate V3 checksumsAs in V3 will use a pseudo header(which may only be implemented for IPv6 by some manufacturers)
 # TRUE or FALSE (case-insensitive)
 #vrrp.v3_checksum_as_in_v2: FALSE
 
@@ -4974,6 +5184,10 @@ capture.devices_pmode: en0(1),awdl0(1),bridge0(1),ipsec0(1),utun0(1),fw0(1),en1(
 # Whether the X11 dissector should reassemble messages spanning multiple TCP segments. To use this option, you must also enable "Allow subdissectors to reassemble TCP streams" in the TCP protocol settings.
 # TRUE or FALSE (case-insensitive)
 #x11.desegment: TRUE
+
+# TCP ports to be decoded as X11 (default: 6000-6063)
+# A string denoting an positive integer range (e.g., "1-20,30-40")
+#x11.tcp.ports: 6000-6063
 
 # Set the SCTP port for X2AP messages
 # A decimal number
