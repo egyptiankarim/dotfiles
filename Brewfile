@@ -9,6 +9,7 @@ brew 'docker-compose'
 brew 'nmap'
 brew 'openssl'
 brew 'python'
+brew 'python3'
 brew 'ruby'
 brew 'spark'
 

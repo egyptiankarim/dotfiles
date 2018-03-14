@@ -1,11 +1,6 @@
 "*":
   core:
     closeDeletedFileTabs: true
-    disabledPackages: [
-      "background-tips"
-      "exception-reporting"
-      "metrics"
-    ]
     hideGitIgnoredFiles: true
     ignoredNames: [
       ".bundle"
@@ -26,6 +21,8 @@
     softWrap: true
     softWrapAtPreferredLineLength: true
     tabType: "soft"
+  "exception-reporting":
+    userId: "89c01741-9df2-4555-840b-898dcd7e8ea8"
   linter: {}
   minimap: {}
   "one-dark-ui": {}
