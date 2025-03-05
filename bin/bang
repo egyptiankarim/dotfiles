@@ -4,7 +4,7 @@
 #
 # USAGE:
 #
-#   $ bang [target] [request file] [response file (optional)]
+#    $ bang [target] [request file] [response file (optional)]
 
 usage () {
   echo "Usage: $ bang [target] [request file] [response file (optional)]\n"

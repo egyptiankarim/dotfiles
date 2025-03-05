@@ -1,5 +1,9 @@
 #!/bin/sh
 #
-# Sets OS X defaults by running $ZSH/osx/set-defaults.sh.
+# Set my "sane" defaults from anywhere!
+#
+# USAGE:
+#
+#    $ set-defaults
 
-exec $ZSH/osx/set-defaults.sh
+exec $ZSH/macos/set-defaults.sh

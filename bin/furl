@@ -1,6 +1,10 @@
 #!/bin/sh
 #
 # Shortcut for encoding/decoding URLs.
+#
+# USAGE:
+#
+#    $ furl [(d|e)] [URL]
 
 usage () {
   echo "Usage: $ furl [(d|e)] [URL]\n"

@@ -1,5 +1,10 @@
 #!/usr/bin/env ruby
-# Remove all gems EXCEPT defaults :)
+#
+# Remove all gems except the defaults.
+#
+# USAGE:
+#
+#    $ gem-reset
 
 `gem list -d`.split(/\n\n^(?=\w)/).each do |data|
   match = data.match(/(?<name>([^\s]+)) \((?<versions>.*)\)/)

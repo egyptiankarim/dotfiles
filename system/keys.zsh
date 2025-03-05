@@ -1,2 +1,7 @@
-# Pipe my public key to my clipboard.
-alias pubkey="more ~/.ssh/id_rsa.pub | pbcopy | echo '=> Public key copied to pasteboard.'"
+echo "\n"
+echo "Loading SSH Keys"
+echo "----------------"
+
+ssh-add --apple-use-keychain ~/.ssh/github.com
+
+echo "----------------"

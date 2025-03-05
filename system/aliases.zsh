@@ -1,6 +1,7 @@
-# grc overides for ls
-#   Made possible through contributions from generous benefactors like
-#   `brew install coreutils`
+# GRC overrides for `ls`
+#
+# Relies on `brew install coreutils`.
+
 if $(gls &>/dev/null)
 then
   alias ls="gls -F --color"
@@ -15,6 +16,5 @@ alias ....="cd ../../.."
 
 function md ()
 {
-    mkdir -p -- "$1" &&
-      cd -P -- "$1"
+    mkdir -p -- "$1" && cd -P -- "$1"
 }

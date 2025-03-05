@@ -1,0 +1,13 @@
+#!/bin/sh
+#
+# Move stuff to the tash bin.
+#
+# USAGE:
+#
+#    $ trash
+
+while [ $# -gt 0 ]
+do
+    mv "$1" ~/.Trash/"$1 $(date)"
+    shift
+done
